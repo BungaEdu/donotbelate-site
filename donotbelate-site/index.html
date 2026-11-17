@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DoNotBeLate — Voice reminders so you're never late</title>
+<meta name="description" content="DoNotBeLate tells you out loud how much time you have left, every few minutes, so you never lose track of time.">
+<style>
+  :root { --blue:#4D59BE; --yellow:#EAB916; --navy:#181C3B; --bg:#F4F5F9; --card:#fff; --text:#181C3B; --muted:#5A5F7A; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#10132A; --card:#1B1F3D; --text:#F2F3F8; --muted:#A9ADC7; } }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 20px; }
+  header { display:flex; justify-content:space-between; align-items:center; padding:20px 0; }
+  .logo { font-weight:800; font-size:20px; }
+  .logo span { color:var(--yellow); }
+  .lang button { background:none; border:1px solid var(--muted); color:var(--text); border-radius:999px; padding:4px 12px; cursor:pointer; font-size:14px; }
+  .lang button[aria-pressed="true"] { background:var(--blue); border-color:var(--blue); color:#fff; }
+  .hero { background:var(--blue); color:#fff; border-radius:28px; padding:56px 32px; margin:8px 0 40px; display:grid; grid-template-columns:1.3fr 1fr; gap:32px; align-items:center; }
+  .hero h1 { font-size:clamp(32px,5vw,52px); line-height:1.1; margin:0 0 16px; letter-spacing:-0.02em; }
+  .hero p { font-size:18px; margin:0 0 28px; opacity:.92; }
+  .pill { display:inline-block; background:var(--yellow); color:var(--navy); font-weight:700; padding:14px 26px; border-radius:999px; text-decoration:none; }
+  .ring { width:220px; height:220px; margin:0 auto; border-radius:50%; border:14px solid var(--yellow); display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ring small { font-size:16px; opacity:.9; }
+  .ring strong { font-size:64px; font-weight:800; line-height:1; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-bottom:40px; }
+  .card { background:var(--card); border-radius:20px; padding:24px; }
+  .card h3 { margin:0 0 8px; font-size:18px; }
+  .card p { margin:0; color:var(--muted); }
+  h2 { font-size:28px; letter-spacing:-0.01em; margin:0 0 16px; }
+  .examples .card p { color:var(--text); font-size:18px; }
+  footer { border-top:1px solid rgba(127,127,127,.25); padding:24px 0 40px; color:var(--muted); font-size:14px; display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; }
+  footer a { color:inherit; }
+  [lang="es"] .en, [lang="en"] .es { display:none; }
+  @media (max-width:700px) { .hero { grid-template-columns:1fr; padding:40px 24px; } .ring { width:180px; height:180px; } .ring strong { font-size:52px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">DoNotBe<span>Late</span></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1 class="en">Hear how much time you have left.</h1>
+      <h1 class="es">Escucha cuánto tiempo te queda.</h1>
+      <p class="en">DoNotBeLate reminds you out loud every few minutes, so you never lose track of time while you shower, get dressed or finish that last task.</p>
+      <p class="es">DoNotBeLate te avisa en voz alta cada pocos minutos para que no pierdas la noción del tiempo mientras te duchas, te vistes o terminas esa última tarea.</p>
+      <span class="pill en">Coming soon to Google Play</span>
+      <span class="pill es">Muy pronto en Google Play</span>
+    </div>
+    <div class="ring" aria-hidden="true">
+      <small class="en">left</small><small class="es">quedan</small>
+      <strong>18:00</strong>
+    </div>
+  </section>
+
+  <section class="examples">
+    <h2 class="en">Just say it like you think it</h2>
+    <h2 class="es">Tal y como lo piensas</h2>
+    <div class="grid">
+      <div class="card"><p class="en">“Remind me every 2 minutes for 20 minutes.”</p><p class="es">“Avísame cada 2 minutos durante 20 minutos.”</p></div>
+      <div class="card"><p class="en">“Remind me every 3 minutes until 8 o'clock.”</p><p class="es">“Avísame cada 3 minutos hasta las 8.”</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="en">Built for people who are always running late</h2>
+    <h2 class="es">Hecha para quien siempre llega tarde</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 class="en">Voice first</h3><h3 class="es">Primero la voz</h3>
+        <p class="en">You don't need to look at the screen. The app tells you the time left and says “Time's up. Don't be late.” at the end.</p>
+        <p class="es">No hace falta mirar la pantalla. La app te dice el tiempo que queda y, al final, “Se acabó el tiempo. No llegues tarde.”</p>
+      </div>
+      <div class="card">
+        <h3 class="en">Clear at a glance</h3><h3 class="es">Clara de un vistazo</h3>
+        <p class="en">A big countdown you can read from across the room, plus a notification with the time left.</p>
+        <p class="es">Una cuenta atrás grande que se lee desde lejos y una notificación con el tiempo que queda.</p>
+      </div>
+      <div class="card">
+        <h3 class="en">One tap to start</h3><h3 class="es">Un toque para empezar</h3>
+        <p class="en">Save your routines as presets — “Get ready”, “Leave home” — and start them with a single tap.</p>
+        <p class="es">Guarda tus rutinas como presets —“Prepararme”, “Salir de casa”— y arráncalas con un solo toque.</p>
+      </div>
+      <div class="card">
+        <h3 class="en">Private by design</h3><h3 class="es">Privada desde el diseño</h3>
+        <p class="en">No account, no ads, no tracking. Your presets and settings stay on your phone.</p>
+        <p class="es">Sin cuenta, sin anuncios y sin rastreo. Tus presets y ajustes se quedan en tu móvil.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 [DEVELOPER NAME]</span>
+    <span>
+      <a href="privacy/"><span class="en">Privacy policy</span><span class="es">Política de privacidad</span></a> ·
+      <a href="mailto:[CONTACT EMAIL]"><span class="en">Contact</span><span class="es">Contacto</span></a>
+    </span>
+  </footer>
+</div>
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.lang button');
+    function setLang(l) {
+      document.documentElement.lang = l;
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === l); });
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
+    if ((navigator.language || '').toLowerCase().indexOf('es') === 0) setLang('es');
+  })();
+</script>
+</body>
+</html>
